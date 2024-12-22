@@ -105,6 +105,8 @@ export default function Home(){
             </div>
           </div>
           </MaxWidthWrapper>
+
+          {/**Value proposition section */}
         </section>       
       </div>
   );
