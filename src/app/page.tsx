@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
@@ -7,6 +8,8 @@ import Image from "next/image";
 import { Check, Star } from 'lucide-react'; 
 import Phone from '@/components/phone'
 import { Icons } from "@/components/Icons";
+import { Reviews } from "@/components/Reviews";
+// import Reviews  from "@/components/Reviews";
 export default function Home(){
   return (
     <div className='bg-slate-50 grainy-light'>
@@ -196,6 +199,10 @@ export default function Home(){
             </div>
           </div>
           </MaxWidthWrapper>
+          <div className = 'pt-16'>
+            <Reviews/>
+
+          </div>
           </section>
           </div>
   );
