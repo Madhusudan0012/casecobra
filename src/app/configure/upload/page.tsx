@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 import { cn } from "@/lib/utils"
+import { Loader2, MousePointerSquareDashed, Image} from "lucide-react"
 import { useState } from "react"
 import Dropzone , {FileRejection} from "react-dropzone"
 
@@ -17,7 +19,7 @@ const Page =()=>{
         "ring-blue-900/25 bg-blue-900/10": isDragOver, 
         }
          )} >
-        <div className = 'relative flex flex -1 flex-col items-center justify-center w-full'>
+        <div className = 'relative flex -1 flex-col items-center justify-center w-full'>
 
             <Dropzone
              onDropRejected={onDropRejected}
@@ -35,6 +37,14 @@ const Page =()=>{
                     <div className="h-full w-full flex-1 flex-col items-center justify-center"
                         {...getRootProps()}>
                         <input {...getInputProps()}/>
+                        {
+                            isDragOver ?(
+                            <MousePointerSquareDashed className="h-6 w-6 text-zinc-500 mb-2" />) : false ?(
+                                < Loader2 className='animate-spin h-6 w-6 text-zinc-500 mb-2'/>
+                            ): (
+                                <Image className='h-6 w-6 text-zinc-500 mb-2' />
+                            )
+                        }
            
                     </div>
                 )}
