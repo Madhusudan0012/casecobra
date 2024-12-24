@@ -33,9 +33,6 @@ const Footer = () =>{
                     </Link>
                 </div>
                 </div>
-
-
-
             </div>
 
           
