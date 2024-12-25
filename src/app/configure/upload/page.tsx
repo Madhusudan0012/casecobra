@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
@@ -8,15 +9,16 @@ import Dropzone , {FileRejection} from "react-dropzone"
 import { Progress } from "@/components/ui/progress"
 import { useUploadThing } from "@/lib/uploadthing"
 import { useRouter } from "next/navigation"
+import { useToast } from "@/hooks/use-toast"
 
 
 const Page =()=>{
-
+    const {toast} = useToast()
     const [isDragOver , setIsDragOver ] = useState<boolean>(false)
     const [uploadProgress , setUploadProgress]  = useState<number>(0)
     const router = useRouter()
 
-    const {} = useUploadThing("imageUploader", {
+    const {startUpload} = useUploadThing("imageUploader", {
         onClientUploadComplete : ([data]) => {
             const configId = data.serverData.configId 
             startTransition (()=>{
@@ -24,12 +26,32 @@ const Page =()=>{
 
             })
 
-        }
+        }, 
+        onUploadProgress(p){
+            setUploadProgress(p)
+
+        },
         })
-    const onDropRejected =() =>{}
+    const onDropRejected =( rejectedFiles : FileRejection[] ) =>{
+        const [ file ] = rejectedFiles
+        setIsDragOver(false)
+
+        toast({
+            title : `${file.file.type} type is not supported`,
+            description : "please choose a PNG , JPEG or JPG image instead." , 
+            variant :"destructive" 
+        })
+    }
     const onDropAccepted = () =>{
 
-        console.log("accepted")
+        (acceptedFiles : File[] ) =>{
+            startUpload(acceptedFiles , {configId : undefined})
+
+            setIsDragOver(false)
+
+         
+
+        }
     }
     const isUploading = false
     const [isPending, startTransition] = useTransition()
