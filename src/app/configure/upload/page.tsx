@@ -38,10 +38,9 @@ const Page =()=>{
             variant : "destructive" 
         })
     }
-    const onDropAccepted = (acceptedFiles : File[]) =>{
-            startUpload(acceptedFiles , {configId : undefined});
-            setIsDragOver(false)     
-            // console.log("accepted");
+    const onDropAccepted = (acceptedFiles : File[]) => {
+            startUpload(acceptedFiles , { configId : undefined });
+            setIsDragOver(false)    
         }
     const [isPending, startTransition] = useTransition()
 
