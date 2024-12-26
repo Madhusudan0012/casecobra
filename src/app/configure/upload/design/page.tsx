@@ -5,11 +5,6 @@ interface PageProps {
 
     }
 }
-
-
-
-
-
 const Page  = async({searchParams} : PageProps) =>{
 
     const {id} = searchParams
