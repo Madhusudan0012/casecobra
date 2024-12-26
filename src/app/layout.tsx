@@ -38,8 +38,6 @@ export default function RootLayout({
             <Footer/>
             </main>  
             <Toaster/>
-       
-        
       </body>
     </html>
   );
